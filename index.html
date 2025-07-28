@@ -1,45 +1,10 @@
-<!-- <input id="name" placeholder="الاسم" />
-<input id="email" placeholder="الإيميل" />
-<input id="pass" placeholder="كلمة المرور" />
-<button onclick="send()">Send</button>
-
-<script>
-  function send() {
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const pass = document.getElementById("pass").value;
-
-    const xhr = new XMLHttpRequest();
-    const url = "https://script.google.com/macros/s/AKfycbzTvHfqVbCG20UFkExdMgrlTf5mMT72UO7-VfjurS5zfgTPe8N9fIPRRqe98SWYXFoFqg/exec";
-
-    const params = `name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&pass=${encodeURIComponent(pass)}`;
-
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState == 4) {
-        const text = xhr.responseText;
-        if (xhr.status == 200 || xhr.status == 0) {
-          console.log("✅ تم الإرسال! الرد: " + (text || "لا يوجد رد"));;
-        } else {
-          console.log("❌ خطأ في الاتصال. الكود: " + xhr.status);
-        }
-      }
-    };
-
-    xhr.send(params);
-  }
-</script> -->
 
 
 
 
 
 
-
-
-
+<!-- 
 
 <input id="name" placeholder="الاسم" />
 <input id="email" placeholder="الإيميل" />
@@ -80,4 +45,31 @@
 
 
 
+ -->
 
+
+
+ <script>
+  function send() {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const pass = document.getElementById("pass").value;
+
+    const url = "https://script.google.com/macros/s/AKfycbzomi9hwCrkqLbF4cUXe9pdZCfPiR2ccNwY6hxQAaqgzgGPwaUEcQuLi6kmeD9Lq1O6lw/exec";
+
+    fetch(url, {
+      method: "POST",
+      mode: "no-cors",  // 👈 تجنب CORS error
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: `name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&pass=${encodeURIComponent(pass)}`
+    })
+    .then(() => {
+      console.log("✅ تم الإرسال! (بدون رد بسبب no-cors)");
+    })
+    .catch((error) => {
+      console.error("❌ خطأ:", error);
+    });
+  }
+</script>
